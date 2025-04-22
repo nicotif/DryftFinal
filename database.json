@@ -1,0 +1,47 @@
+{
+    "Users": {
+      "_id": "ObjectId_001",
+      "name": "Fred",
+      "email": "fredjohnson@email.com",
+      "password": "passid_01",
+      "preferences": "tokens",
+      "createdAt": "1/5/2025",
+      "updatedAt": "2/5/2025"
+    },
+    "Bookings": {
+      "_id": "ObjectId_02",
+      "userId": "ObjectId_001",
+      "tripId": "ObjectId_03",
+      "status": "taveling", 
+      "bookingDate": "4/12/2035",
+      "paymentId": "1254",
+      "createdAt": "2/5/2025",
+      "updatedAt": "4/5/2025"
+    },
+    "Payments": {
+      "_id": "ObjectId_004",
+      "userId": "ObjectId_001",
+      "amount": "40",
+      "paymentMethod": "credit",
+      "status": "success", 
+      "transactionDate": "1/5/2025",
+      "receiptUrl": "receiptUrl_01",
+      "createdAt": "1/5/2025",
+      "updatedAt": "1/7/2025"
+    },
+    "API_Endpoints": {
+      "User_Authentication": {
+        "POST /api/auth/register": "Registers a new user",
+        "POST /api/auth/login": "Authenticates a user and returns a JWT token"
+      },
+      "Trip_Management": {
+        "GET /api/trips": "Retrieves available trips",
+        "POST /api/trips/book": "Books a trip for a user"
+      },
+      "Payment_Processing": {
+        "POST /api/payments": "Processes a transaction",
+        "GET /api/payments/history": "Fetches user payment history"
+      }
+    }
+  }
+  
