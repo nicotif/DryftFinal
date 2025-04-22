@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dryft - Local Discovery</title>
+
+    <!-- favicon link -->
+    <link rel="icon" href="images/logo.png" type="image/png" />
+
+    <!-- Google Fonts & Font Awesome -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <!-- Link to our external CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===================== -->
+    <!-- Landing Page (Hidden Nav) -->
+    <!-- ===================== -->
+    <div id="landing" class="page active-page">
+      <div class="landing-content">
+        <img src="images/logo.png" class="main-logo" alt="DRYFT logo" />
+        <div class="auth-buttons">
+          <button class="landing-button" onclick="showPage('signup')">
+            GET STARTED
+          </button>
+          <button class="landing-button" onclick="showPage('login')">
+            LOG IN
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Login Page (Hidden Nav) -->
+    <!-- ===================== -->
+    <div id="login" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <img src="images/logo.png" class="main-logo" alt="DRYFT logo" />
+      <h1 class="header">LOG IN</h1>
+      <div class="form-group">
+        <input type="text" class="auth-input" placeholder="EMAIL" />
+        <input type="password" class="auth-input" placeholder="PASSWORD" />
+      </div>
+      <button class="landing-button" onclick="loginUser(event)">LOGIN</button>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Signup Page (Hidden Nav) -->
+    <!-- ===================== -->
+    <div id="signup" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <img src="images/logo.png" class="main-logo" alt="DRYFT logo" />
+      <h1 class="header">SIGN UP</h1>
+      <div class="form-group">
+        <button class="account-button">BUSINESS</button>
+        <button class="account-button">CUSTOMER</button>
+        <input type="text" class="auth-input" placeholder="FULL NAME" />
+        <input type="email" class="auth-input" placeholder="EMAIL" />
+        <input type="text" class="auth-input" placeholder="USERNAME" />
+        <input type="password" class="auth-input" placeholder="PASSWORD" />
+      </div>
+      <button class="landing-button" onclick="registerUser()">SIGN UP</button>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Home Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="home" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <!-- Star Button -->
+      <button class="star-button" onclick="showPage('starOfTheWeek')">
+        <i class="fas fa-star"></i>
+      </button>
+
+      <div class="search-bar">
+        <input type="text" class="auth-input" placeholder="Search" />
+      </div>
+
+      <!-- Token Top Ten Section -->
+      <div class="token-top-ten">
+        <h2>Token Top Ten</h2>
+        <div class="token-scroll-container">
+          <!-- Token Items -->
+          <div class="token-item">
+            <img src="images/token2.png" alt="Token 2" />
+             <p>Blossom Park</p>
+          </div>
+          <div class="token-item">
+            <img src="images/token1.png" alt="Token 1" />
+             <p>Vinyl Vibes</p>
+          </div>
+          <div class="token-item">
+            <img src="images/token3.png" alt="Token 3" />
+            <p>Pizza Planet</p>
+          </div>
+          <div class="token-item">
+            <img src="images/token5.PNG" alt="Token 5" />
+             <p>Sushi Haven</p>
+          </div>
+          <div class="token-item">
+            <img src="images/token6.PNG" alt="Token 6" />
+             <p>Hobby Craft</p>
+          </div>
+          <div class="token-item">
+            <img src="images/token7.PNG" alt="Token 7" />
+             <p>Boba World</p>
+          </div>
+          <div class="token-item">
+            <img src="images/token8.png" alt="Token 8" />
+             <p>Sarah's Ceramics</p>
+          </div>
+          <div class="token-item">
+            <img src="images/token9.png" alt="Token 9" />
+             <p>Green Thumbs Up</p>
+          </div>
+          <div class="token-item">
+            <img src="images/Token10.png" alt="Token 10" />
+            <p>Morning Roast</p>
+          </div>
+          <!-- ...Add more as needed... -->
+        </div>
+      </div>
+
+      <!-- Local Recs Section -->
+      <div class="local-recs">
+        <h2>Local Recs</h2>
+
+        <!-- Surf Shops -->
+        <div class="local-category">
+          <h3>Surf Shops</h3>
+          <div class="local-scroll-container">
+            <div class="local-item">
+              <img src="images/surf1.jpg" alt="Wave Rider" />
+              <p>Wave Rider</p>
+            </div>
+            <div class="local-item">
+              <img src="images/surf2.jpg" alt="Board House" />
+              <p>Board House</p>
+            </div>
+            <div class="local-item">
+              <img src="images/surf3.jpg" alt="Surf Shack" />
+              <p>Surf Shack</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Italian Restaurants -->
+        <div class="local-category">
+          <h3>Italian Restaurants</h3>
+          <div class="local-scroll-container">
+            <div class="local-item">
+              <img src="images/italian1.jpg" alt="La Dolce Vita" />
+              <p>La Dolce Vita</p>
+            </div>
+            <div class="local-item">
+              <img src="images/italian2.jpg" alt="Amore Mio" />
+              <p>Amore Mio</p>
+            </div>
+            <div class="local-item">
+              <img src="images/italian3.jpg" alt="Pasta Palace" />
+              <p>Pasta Palace</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sushi Restaurants -->
+        <div class="local-category">
+          <h3>Sushi Restaurants</h3>
+          <div class="local-scroll-container">
+            <div class="local-item">
+              <img src="images/sushi1.jpg" alt="Sushi Haven" />
+              <p>Sushi Haven</p>
+            </div>
+            <div class="local-item">
+              <img src="images/sushi2.jpg" alt="Rolling Sushi" />
+              <p>Rolling Sushi</p>
+            </div>
+            <div class="local-item">
+              <img src="images/sushi3.jpg" alt="Wasabi World" />
+              <p>Wasabi World</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coffee Shops -->
+        <div class="local-category">
+          <h3>Coffee Shops</h3>
+          <div class="local-scroll-container">
+            <div class="local-item">
+              <img src="images/coffee1.jpg" alt="Morning Roast" />
+              <p>Morning Roast</p>
+            </div>
+            <div class="local-item">
+              <img src="images/coffee2.jpg" alt="Java Haven" />
+              <p>Java Haven</p>
+            </div>
+            <div class="local-item">
+              <img src="images/coffee3.jpg" alt="Sip Happens" />
+              <p>Sip Happens</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Feed Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="feed" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1>FEED</h1>
+
+      <div class="feed-content">
+        <!-- Post 1 -->
+        <div class="post-card">
+          <div class="post-header">
+            <img src="images/user1.jpg" class="user-avatar" alt="User 1" />
+            <span class="username">surfer_dude</span>
+          </div>
+          <div class="post-image">
+            <img src="images/post1.jpg" alt="Post 1" />
+          </div>
+          <div class="post-actions">
+            <button class="like-button" onclick="toggleLike(this)">
+              <i class="far fa-heart"></i>
+              <span class="like-count">248</span>
+            </button>
+          </div>
+          <div class="post-caption">
+            <strong>surfer_dude</strong> Check out this Gnarley surf shop i
+            found 🌊☀️ #surflife
+          </div>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="post-card">
+          <div class="post-header">
+            <img src="images/user2.jpg" class="user-avatar" alt="User 2" />
+            <span class="username">pizza_lover</span>
+          </div>
+          <div class="post-image">
+            <img src="images/post2.jpg" alt="Post 2" />
+          </div>
+          <div class="post-actions">
+            <button class="like-button" onclick="toggleLike(this)">
+              <i class="far fa-heart"></i>
+              <span class="like-count">165</span>
+            </button>
+          </div>
+          <div class="post-caption">
+            <strong>pizza_lover</strong> Friday night special at Freznos! 🍕🔥
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Profile Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="profile" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <!-- Settings Icon -->
+      <div class="settings-icon" onclick="showPage('settings')">
+        <i class="fas fa-cog"></i>
+      </div>
+
+      <div class="profile-content">
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- Profile Picture Container -->
+          <div
+            class="profile-picture-container"
+            onclick="document.getElementById('profile-pic-upload').click()"
+          >
+            <img
+              id="profilePic"
+              src="images/profile.jpg"
+              class="profile-pic"
+              alt="Profile Picture"
+            />
+            <span class="profile-picture-overlay"></span>
+          </div>
+          <!-- Hidden File Input for Profile Picture -->
+          <input
+            type="file"
+            id="profile-pic-upload"
+            accept="image/*"
+            style="display: none"
+            onchange="handleProfilePicUpload(event)"
+          />
+          <!-- Username will be populated dynamically -->
+          <h2 class="username">@user</h2>
+
+          <!-- Tokens Collected -->
+          <div class="tokens-section">
+            <h2>Tokens Collected</h2>
+            <div class="tokens-count">0</div>
+          </div>
+
+          <!-- Ranking -->
+          <div class="ranking-section">
+            <h2>Ranking</h2>
+            <div class="ranking-number">100+</div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- Followers and Following -->
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-number" id="follower-count">0</span>
+              <span class="stat-label">Followers</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">0</span>
+              <span class="stat-label">Following</span>
+            </div>
+          </div>
+
+          <!-- Follow Button -->
+          <button
+            class="follow-button"
+            id="follow-button"
+            onclick="toggleFollow()"
+          >
+            Follow
+          </button>
+
+          <div class="form-group">
+            <label for="bio">Bio</label>
+            <!-- Use a contenteditable div for a dynamic, inline editing experience -->
+            <div
+              id="bio"
+              class="auth-input message-input"
+              contenteditable="true"
+              style="border: 1px solid #ccc; padding: 8px; min-height: 80px"
+            >
+              Tell Us About Yourself!
+            </div>
+          </div>
+
+          <!-- Post Button -->
+          <button class="post-button" onclick="showPage('makePost')">
+            Post
+          </button>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="gallery-section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+          <!-- Gray boxes as placeholders for gallery images -->
+          <div class="gallery-box"></div>
+          <div class="gallery-box"></div>
+          <div class="gallery-box"></div>
+          <div class="gallery-box"></div>
+          <div class="gallery-box"></div>
+          <div class="gallery-box"></div>
+        </div>
+      </div>
+    </div>
+
+<!-- ===================== -->
+<!-- Post Detail Page -->
+<!-- ===================== -->
+    <div id="postDetail" class="page">
+      <button class="back-button" onclick="showPage('profile')">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <div class="post-card" id="detail-card">
+        <!-- Populated in JS -->
+      </div>
+      <button class="landing-button delete-button" onclick="deleteCurrentPost()">
+        Delete Post
+      </button>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Make a Post -->
+    <!-- ===================== -->
+    <div id="makePost" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="header">Make a Post</h1>
+
+      <div class="post-form">
+        <textarea
+          id="postContent"
+          class="auth-input message-input"
+          placeholder="Write your caption here..."
+        ></textarea>
+        <!-- Hide the file input and replace with a label as a button -->
+        <input
+          type="file"
+          id="postImage"
+          accept="image/*"
+          style="display: none"
+        />
+        <label for="postImage" class="landing-button">Add Photo</label>
+        <div id="postPreview" class="post-preview" style="display: none"></div>
+        <button class="landing-button" onclick="submitPost()">Post</button>
+      </div>
+    </div>
+
+    <!-- Business Profile Page -->
+    <div id="businessProfile" class="page">
+      <!-- Back Button -->
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <!-- Settings Icon -->
+      <div class="settings-icon" onclick="showPage('settings')">
+        <i class="fas fa-cog"></i>
+      </div>
+
+      <div class="profile-content">
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- Business Logo -->
+          <img
+            src="https://placehold.co/119x113"
+            class="profile-pic"
+            alt="Business Logo"
+          />
+          <h1 class="username">Freznos</h1>
+
+          <!-- Business Stats -->
+          <div class="tokens-section">
+            <h2>Followers</h2>
+            <div class="tokens-count">1200</div>
+          </div>
+          <div class="ranking-section">
+            <h2>Following</h2>
+            <div class="ranking-number">100</div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- Follow Button -->
+          <button
+            class="follow-button"
+            id="follow-button"
+            onclick="toggleFollow()"
+          >
+            Follow
+          </button>
+
+          <!-- Bio -->
+          <div class="bio-section">
+            <h2>Bio</h2>
+            <p>Your neighborhood spot for fresh, locally-crafted pizza. 🍕</p>
+          </div>
+
+          <!-- Token Section -->
+          <div class="bio-section">
+            <h2>Token</h2>
+            <img
+              src="https://placehold.co/113x113"
+              class="token-image"
+              alt="Token"
+            />
+          </div>
+
+          <!-- Ranking Section -->
+          <div class="bio-section">
+            <h2>Ranking</h2>
+            <div class="ranking-number">#382</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deals Section -->
+      <div class="gallery-section">
+        <h2>Deals</h2>
+        <div class="deals-grid">
+          <div class="deal-item">
+            <img src="https://placehold.co/80x103" alt="Deal 1" />
+            <p>20% off</p>
+          </div>
+          <div class="deal-item">
+            <img src="https://placehold.co/71x103" alt="Deal 2" />
+            <p>10% off</p>
+          </div>
+          <div class="deal-item">
+            <img src="https://placehold.co/69x103" alt="Deal 3" />
+            <p>15% off</p>
+          </div>
+          <div class="deal-item">
+            <img src="https://placehold.co/69x103" alt="Deal 4" />
+            <p>30% off</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Section -->
+      <div class="gallery-section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+          <img src="https://placehold.co/115x117" alt="Gallery Image 1" />
+          <img src="https://placehold.co/114x117" alt="Gallery Image 2" />
+          <img src="https://placehold.co/113x117" alt="Gallery Image 3" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Tokens Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="tokens" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="header">Tokens</h1>
+
+      <div class="user-stats">
+        <div class="stat">
+          <span class="stat-number" id="total-tokens">12</span>
+          <span class="stat-label">Tokens Collected</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="user-ranking">#4</span>
+          <span class="stat-label">Ranking</span>
+        </div>
+      </div>
+
+      <!-- Scan New Token Button -->
+      <button class="scan-token-button" onclick="showPage('scanToken')">
+        <i class="fas fa-camera"></i>
+        Scan New Token
+      </button>
+
+      <!-- Tokens Grid -->
+      <div class="tokens-grid">
+        <img src="images/token1.png" alt="Token 1" class="token-image" />
+        <img src="images/token2.png" alt="Token 2" class="token-image" />
+        <img src="images/token3.png" alt="Token 3" class="token-image" />
+        <img src="images/Token4.png" alt="Token 4" class="token-image" />
+        <img src="images/token5.PNG" alt="Token 5" class="token-image" />
+        <img src="images/token6.PNG" alt="Token 6" class="token-image" />
+        <img src="images/token7.PNG" alt="Token 7" class="token-image" />
+        <img src="images/token8.png" alt="Token 8" class="token-image" />
+        <img src="images/token9.png" alt="Token 9" class="token-image" />
+        <img src="images/Token10.png" alt="Token 10" class="token-image" />
+        <img src="images/token11.png" alt="Token 11" class="token-image" />
+        <img src="images/token12.png" alt="Token 12" class="token-image" />
+      </div>
+    </div>
+    <!-- ===================== -->
+     <!-- Redemption Page (Nav Visible) -->
+     <!-- ===================== -->
+     <div id="redemption" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="header">Redeem Token</h1>
+
+      <div class="redemption-form">
+        <label for="redemption-code">Enter Redemption Code:</label>
+        <input
+          type="text"
+          id="redemption-code"
+          class="auth-input"
+          placeholder="Enter your code here"
+        />
+        <button class="landing-button" id="redeem-button">Redeem</button>
+        <p class="redemption-message" id="redemption-message"></p>
+      </div>
+    </div>
+
+<!-- Token Info Display -->
+<div id="token-info" style="display: none">
+  <h3>Your Redeemed Token:</h3>
+  <img id="token-image" src="" alt="Token Image" />
+  <p id="token-name"></p>
+  <p id="token-description"></p>
+  <button id="addToCollectionButton">Add to Collection</button>
+</div>
+  </div>
+</div>
+    <!-- ===================== -->
+    <!-- Star of the Week Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="starOfTheWeek" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <h1 class="token-name">Blossom Park Token</h1>
+
+      <div class="selected-token">
+        <img
+          src="images/FIXEDParkgif.gif"
+          alt="Selected Token"
+          class="token-image"
+        />
+        <h1 class="header">Star of the Week</h1>
+      </div>
+
+      <div class="star-user">
+        <img src="images/friend1.jpg" alt="Username" class="user-avatar" />
+        <h2 class="username">@Fred</h2>
+        <p class="user-gallery-title">Gallery</p>
+      </div>
+
+      <div class="token-gallery">
+        <img src="images/coffee1.jpg" alt="Token 1" class="gallery-image" />
+        <img src="images/surf1.jpg" alt="Token 2" class="gallery-image" />
+        <img src="images/italian1.jpg" alt="Token 3" class="gallery-image" />
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Settings Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="settings" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="settings-title">Settings</h1>
+
+      <div class="settings-options">
+        <div class="settings-item" onclick="showPage('editProfile')">
+          <div class="settings-button">Edit Profile</div>
+        </div>
+        <div class="settings-item" onclick="showPage('favorites')">
+          <div class="settings-button">Favorites</div>
+        </div>
+        <div class="settings-item" onclick="showPage('friends')">
+          <div class="settings-button">Friends</div>
+        </div>
+        <div class="settings-item" onclick="showPage('contactUs')">
+          <div class="settings-button">Contact Us!</div>
+        </div>
+        <div class="settings-item" onclick="logOut()">
+          <div class="settings-button logout-button">Log Out</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Contact Us Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="contactUs" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="header">Contact Us</h1>
+
+      <div class="contact-form">
+        <input type="text" class="auth-input" placeholder="Full Name" />
+        <input type="email" class="auth-input" placeholder="Email Address" />
+        <input type="text" class="auth-input" placeholder="Subject" />
+        <textarea
+          class="auth-input message-input"
+          placeholder="Message"
+        ></textarea>
+        <button class="landing-button" onclick="submitContactForm()">
+          Submit
+        </button>
+      </div>
+
+      <p class="confirmation-message">We will get back to you asap :)</p>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Friends Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="friends" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="header">Friends</h1>
+
+      <div class="friends-list">
+        <div class="friend-item">
+          <img src="images/friend1.jpg" alt="Mav" class="friend-avatar" />
+          <span class="friend-name">Mav</span>
+        </div>
+        <div class="friend-item">
+          <img src="images/friend2.jpg" alt="Steven" class="friend-avatar" />
+          <span class="friend-name">Steven</span>
+        </div>
+        <div class="friend-item">
+          <img src="images/friend3.jpg" alt="Britt" class="friend-avatar" />
+          <span class="friend-name">Britt</span>
+        </div>
+        <div class="friend-item">
+          <img src="images/friend4.jpg" alt="Casey" class="friend-avatar" />
+          <span class="friend-name">Casey</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Favorites Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="favorites" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="header">Favorites</h1>
+
+      <div class="favorites-content">
+        <!-- Example Favorited Post 1 -->
+        <div class="post-card">
+          <div class="post-header">
+            <img src="images/user1.jpg" class="user-avatar" alt="User 1" />
+            <span class="username">surfer_dude</span>
+          </div>
+          <div class="post-image">
+            <img src="images/post1.jpg" alt="Post 1" />
+          </div>
+          <div class="post-actions">
+            <button class="like-button liked" onclick="toggleLike(this)">
+              <i class="fas fa-heart"></i>
+              <span class="like-count">248</span>
+            </button>
+          </div>
+          <div class="post-caption">
+            <strong>surfer_dude</strong> Check out this gnarly surf shop I found
+            🌊☀️ #surflife
+          </div>
+        </div>
+
+        <!-- Example Favorited Post 2 -->
+        <div class="post-card">
+          <div class="post-header">
+            <img src="images/user2.jpg" class="user-avatar" alt="User 2" />
+            <span class="username">pizza_lover</span>
+          </div>
+          <div class="post-image">
+            <img src="images/post2.jpg" alt="Post 2" />
+          </div>
+          <div class="post-actions">
+            <button class="like-button liked" onclick="toggleLike(this)">
+              <i class="fas fa-heart"></i>
+              <span class="like-count">165</span>
+            </button>
+          </div>
+          <div class="post-caption">
+            <strong>pizza_lover</strong> Friday night special at Freznos! 🍕🔥
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Edit Profile Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="editProfile" class="page">
+      ...
+      <div class="profile-picture-upload">
+        <img
+          src="images/profile.jpg"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+        <label for="edit-profile-pic-upload" class="upload-button">Change Photo</label>
+        <input
+          type="file"
+          id="edit-profile-pic-upload"
+          accept="image/*"
+          style="display: none"
+          onchange="handleProfilePicUpload(event)"
+        />
+      </div>
+
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input
+            type="text"
+            id="full-name"
+            class="auth-input"
+            placeholder="Enter your full name"
+            value=""
+          />
+        </div>
+
+        <!-- New Username Input -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="auth-input"
+            placeholder="Enter your username"
+            value=""
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            class="auth-input"
+            placeholder="Enter your email"
+            value=""
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-bio">Bio</label>
+          <textarea
+            id="edit-bio"
+            class="auth-input message-input"
+            placeholder="Tell us about yourself"
+          ></textarea>
+        </div>
+
+        <button class="landing-button" onclick="saveProfileChanges()">
+          Save Changes
+        </button>
+      </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Scan Token Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="scanToken" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="header">Scan Token</h1>
+
+      <div class="camera-preview">
+        <div class="camera-feed"></div>
+        <div class="scan-animation">
+          <div class="scan-line"></div>
+        </div>
+      </div>
+      <button onclick="showPage('redemption')" class="landing-button">
+        Enter a Redemption Code
+      </button>
+
+      <p class="scanning-message">Scanning...</p>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Map Page (Nav Visible) -->
+    <!-- ===================== -->
+    <div id="map" class="page">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h1 class="header">Map</h1>
+      <div class="search-bar">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search for a place..."
+        />
+        <button class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <div class="map-container">
+        <img src="images/map.jpg" alt="Map" class="map-image" />
+      </div>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- SINGLE GLOBAL NAV BAR (shown/hidden in script.js) -->
+    <!-- ================================================= -->
+    <div class="nav-bar" id="globalNavBar">
+      <div class="nav-item" onclick="showPage('home')">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </div>
+      <div class="nav-item" onclick="showPage('feed')">
+        <i class="fas fa-list"></i>
+        <span>Feed</span>
+      </div>
+      <div class="nav-item logo-nav" onclick="showPage('tokens')">
+        <img src="images/logo.png" alt="DRYFT Logo" />
+      </div>
+      <div class="nav-item" onclick="showPage('map')">
+        <i class="fas fa-map-marked"></i>
+        <span>Map</span>
+      </div>
+      <div class="nav-item" onclick="showPage('profile')">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1475 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Bungee', cursive;
+}
+
+body {
+    background-color: white;
+    max-width: 414px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+}
+
+.page {
+    display: none;
+    padding: 20px;
+    padding-bottom: 80px; /* Space for navigation */
+    padding-top: 60px;  /* Extra top padding, if needed */
+    padding-bottom: 80px;
+}
+
+.active-page {
+    display: block;
+}
+
+.header {
+    text-align: center;
+    font-size: 48px;
+    margin: 20px 0;
+    color: #648268;
+}
+
+/* Navigation Bar Styles */
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 380px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #648268;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.nav-item:hover {
+    background: #f5f5f5;
+}
+
+.nav-item i {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.logo-nav img {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 2px;
+}
+
+.logo-nav {
+    position: relative;
+    top: -15px;
+    background: #648268;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-nav:hover {
+    transform: scale(1.1);
+}
+
+/* Hide Nav Bar on Landing, Signup, and Login Pages */
+#landing .nav-bar,
+#login .nav-bar,
+#signup .nav-bar {
+    display: none !important; /* Force the rule to take precedence */
+}
+
+.landing-button {
+    background-color: #648268;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 24px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.landing-button:hover {
+    transform: scale(1.1);
+}
+
+/* Signup Page Styles */
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between elements */
+}
+
+.account-button {
+    flex: 1; /* Each button takes equal space */
+    padding: 15px;
+    background: #648268;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.account-button.active {
+    background-color: #4a6a4a; /* Darker green for active state */
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    margin: 5px 0;
+    background: #648268;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.auth-input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.business-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.map-container {
+    height: 300px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 20px;
+    margin: 15px 0;
+    justify-content: center;
+}
+
+/* Back Arrow Button */
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.back-button i {
+    font-size: 24px;
+    color: #648268;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover i {
+    color: #4a6a4a; /* Darker green on hover */
+}
+
+/* Landing Page Logo */
+.main-logo {
+    width: 200px; /* Adjust this value to your preferred size */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto 20px; /* Center the logo and add space below */
+}
+
+/* Landing Page Content */
+.landing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh; /* Full viewport height */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Landing Page Buttons */
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 250px;
+}
+
+/* Star Button */
+.star-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other content */
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.star-button i {
+    font-size: 24px;
+    color: #648268; /* Green color */
+    transition: color 0.3s ease;
+}
+
+.star-button:hover i {
+    color: #4a6a4a; /* Darker green on hover */
+}
+
+/* Token Top Ten Section */
+.token-top-ten {
+    margin: 20px 0;
+}
+
+.token-top-ten h1 {
+    font-size: 24px;
+    color: #648268;
+    margin-bottom: 15px;
+}
+
+.token-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px; /* Space for scrollbar */
+}
+
+.token-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.token-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.token-scroll-container::-webkit-scrollbar-thumb {
+    background: #648268;
+    border-radius: 10px;
+}
+
+.token-item {
+    flex: 0 0 auto;
+    width: 120px;
+    text-align: center;
+}
+
+.token-item img {
+    width: 100%;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.token-item p {
+    font-size: 14px;
+    color: #648268;
+    margin: 0;
+}
+
+/* Local Recs Section */
+.local-recs {
+    margin: 20px 0;
+}
+
+.local-recs h2 {
+    font-size: 24px;
+    color: #060606;
+    margin-bottom: 15px;
+}
+
+.local-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 20px; /* Space for content */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.local-scroll-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.local-item {
+    flex: 0 0 auto;
+    width: 150px;
+    text-align: center;
+}
+
+.local-item img {
+    width: 100%;
+    height: 150px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.local-item p {
+    font-size: 14px;
+    color: #648268;
+    margin: 0;
+}
+
+/* Feed Page Styles */
+.feed-content {
+    padding: 15px;
+    margin-bottom: 80px; /* Space for navigation */
+}
+
+.post-card {
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.username {
+    font-weight: bold;
+    color: #648268;
+}
+
+.post-image {
+    width: 100%;
+    height: 400px;
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 0 15px 15px;
+}
+
+.post-actions {
+    padding: 10px 15px;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.like-button i {
+    font-size: 24px;
+    color: #648268;
+    transition: color 0.3s ease;
+}
+
+.like-button.liked i {
+    color: #ff4d4d;
+}
+
+.like-count {
+    font-size: 14px;
+    color: #648268;
+}
+
+.post-caption {
+    padding: 0 15px 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.post-caption strong {
+    color: #648268;
+    margin-right: 5px;
+}
+
+/* Profile Page Styles */
+#profile {
+    padding: 20px;
+    position: relative;
+}
+
+.settings-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #648268;
+    cursor: pointer;
+}
+
+.profile-content {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.left-column {
+    width: 40%;
+    text-align: center;
+}
+
+.right-column {
+    width: 60%;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 15px;
+}
+
+.username {
+    font-size: 30px;
+    color: rgb(2, 2, 2);
+    margin-bottom: 15px;
+}
+
+.tokens-section,
+.ranking-section {
+    margin-bottom: 20px;
+}
+
+.tokens-section h2,
+.ranking-section h2 {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.tokens-count,
+.ranking-number {
+    font-size: 50px;
+    color: #C09A65;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 20px;
+    color: black;
+    display: block;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: black;
+}
+
+.follow-button {
+    background: #648268;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.follow-button:hover {
+    background: #4a6a4a; /* Darker green on hover */
+}
+
+.bio-section {
+    margin-bottom: 20px;
+}
+
+.bio-section h2 {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.bio-section p {
+    font-size: 14px;
+    color: black;
+}
+
+.gallery-section {
+    margin-top: 20px;
+}
+
+.gallery-section h2 {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.post-button {
+    background: #648268;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Settings Page Styles */
+#settings {
+    padding: 20px;
+    position: relative;
+}
+
+.settings-title {
+    font-size: 48px;
+    color: #648268;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.settings-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.settings-item {
+    width: 100%;
+}
+
+.settings-button {
+    background: #648268;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+.logout-button {
+    background: #ff4d4d; /* Red color for logout button */
+}
+
+.logout-button:hover {
+    background: #cc3d3d; /* Darker red on hover */
+}
+
+/* Contact Us Page Styles */
+#contactUs {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-form .auth-input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #648268;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.contact-form .auth-input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-form .message-input {
+    height: 150px;
+    resize: none;
+}
+
+.confirmation-message {
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    margin-top: 20px;
+    font-family: 'Bungee', cursive;
+}
+
+/* Friends Page Styles */
+#friends {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+}
+
+.friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduced gap between items */
+    margin-top: 20px;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Reduced gap between avatar and name */
+}
+
+.friend-avatar {
+    width: 80px; /* Smaller avatar size */
+    height: 80px; /* Smaller avatar size */
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); /* Smaller shadow */
+}
+
+.friend-name {
+    font-size: 18px; /* Smaller font size */
+    font-family: 'Bungee', cursive;
+    color: black;
+}
+
+/* Favorites Page Styles */
+#favorites {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+}
+
+.favorites-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.post-card {
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.username {
+    font-weight: bold;
+    color: #0a0a0a;
+}
+
+.post-image {
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 0 15px 15px;
+}
+
+.post-actions {
+    padding: 10px 15px;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.like-button i {
+    font-size: 24px;
+    color: #648268;
+    transition: color 0.3s ease;
+}
+
+.like-button.liked i {
+    color: #ff4d4d; /* Red color for liked state */
+}
+
+.like-count {
+    font-size: 14px;
+    color: #648268;
+}
+
+.post-caption {
+    padding: 0 15px 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.post-caption strong {
+    color: #648268;
+    margin-right: 5px;
+}
+
+/* Edit Profile Page Styles */
+#editProfile {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.profile-picture-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.upload-button {
+    background: #648268;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.upload-button:hover {
+    background: #4a6a4a; /* Darker green on hover */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: black;
+    font-family: 'Bungee', cursive;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #648268;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.auth-input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.message-input {
+    height: 100px;
+    resize: none;
+}
+
+/* Tokens Page Styles */
+#tokens {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+}
+
+/* User Stats Section */
+.user-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.user-stats .stat {
+    text-align: center;
+}
+
+.user-stats .stat-number {
+    font-size: 50px;
+    color: #C09A65;
+    font-family: 'Bungee', cursive;
+}
+
+.user-stats .stat-label {
+    font-size: 16px;
+    color: black;
+    font-family: 'Bungee', cursive;
+}
+
+/* Tokens Grid */
+.tokens-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 tokens per row */
+    gap: 15px; /* Space between tokens */
+    margin-top: 20px;
+}
+
+.token-image {
+    width: 100%; /* Make tokens responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 0%; /* Make tokens circular */
+    object-fit: cover; /* Ensure images fit nicely */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+/* Scan New Token Button */
+.scan-token-button {
+    width: 100%;
+    padding: 15px;
+    background: #648268;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Bungee', cursive;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.scan-token-button:hover {
+    background: #4a6a4a; /* Darker green on hover */
+}
+
+/* Scan Token Page Styles */
+#scanToken {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+}
+
+/* Camera Preview Area */
+.camera-preview {
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    background: #f0f0f0; /* Placeholder for camera feed */
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+/* Camera Feed Placeholder */
+.camera-feed {
+    width: 100%;
+    height: 100%;
+    background: #ddd; /* Simulate camera feed */
+}
+
+/* QR Code Scanning Animation */
+.scan-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scan-line {
+    width: 80%;
+    height: 2px;
+    background: #648268;
+    position: relative;
+    animation: scan 2s infinite linear;
+}
+
+@keyframes scan {
+    0% {
+        top: -50%;
+    }
+    100% {
+        top: 150%;
+    }
+}
+
+/* Scanning Message */
+.scanning-message {
+    text-align: center;
+    font-size: 20px;
+    color: #648268;
+    font-family: 'Bungee', cursive;
+    margin-top: 20px;
+}
+
+/* Maps Page Styles */
+#map {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #648268;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.search-button {
+    background: #648268;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.search-button:hover {
+    background: #4a6a4a; /* Darker green on hover */
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fits nicely */
+}
+
+/* Star of the Week Page Styles */
+#starOfTheWeek {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+}
+
+/* Selected Token Section */
+.selected-token {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.selected-token .token-image {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    
+    
+}
+
+.selected-token .token-name {
+    font-size: 32px;
+    color: black;
+    font-family: 'Bungee', cursive;
+}
+
+/* Star User Section */
+.star-user {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.star-user .user-avatar {
+    width: 102px;
+    height: 102px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.star-user .username {
+    font-size: 32px;
+    color: black;
+    font-family: 'Bungee', cursive;
+    margin-top: 10px;
+}
+
+.star-user .user-gallery-title {
+    font-size: 24px;
+    color: black;
+    font-family: 'Bungee', cursive;
+    margin-top: 5px;
+}
+
+/* Token Gallery Section */
+.token-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.token-gallery .gallery-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Business Profile Page Styles */
+#businessProfile {
+    padding: 20px;
+    padding-top: 60px; /* Space for the header */
+    padding-bottom: 80px; /* Space for the navigation bar */
+  }
+  
+  #businessProfile .profile-content {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  #businessProfile .left-column {
+    width: 40%;
+    text-align: center;
+  }
+  
+  #businessProfile .right-column {
+    width: 60%;
+  }
+  
+  #businessProfile .profile-pic {
+    width: 119px;
+    height: 113px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 15px;
+  }
+  
+  #businessProfile .username {
+    font-size: 40px;
+    color: black;
+    margin-bottom: 15px;
+  }
+  
+  #businessProfile .tokens-section,
+  #businessProfile .ranking-section {
+    margin-bottom: 20px;
+  }
+  
+  #businessProfile .tokens-section h2,
+  #businessProfile .ranking-section h2 {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  #businessProfile .tokens-count,
+  #businessProfile .ranking-number {
+    font-size: 24px;
+    color: black;
+  }
+  
+  #businessProfile .follow-button {
+    background: #648268;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 32px;
+    font-family: 'Bungee', cursive;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  #businessProfile .bio-section {
+    margin-bottom: 20px;
+  }
+  
+  #businessProfile .bio-section h2 {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  #businessProfile .bio-section p {
+    font-size: 16px;
+    color: black;
+  }
+  
+  #businessProfile .token-image {
+    width: 113px;
+    height: 113px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
+  }
+  
+  #businessProfile .ranking-number {
+    font-size: 64px;
+    color: #C09A65;
+    font-family: 'Bungee', cursive;
+  }
+  
+  #businessProfile .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #businessProfile .deal-item {
+    text-align: center;
+  }
+  
+  #businessProfile .deal-item img {
+    width: 100%;
+    height: 103px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  #businessProfile .deal-item p {
+    font-size: 16px;
+    font-family: 'Fugaz One', cursive;
+    color: black;
+    margin-top: 5px;
+  }
+  
+  #businessProfile .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  #businessProfile .gallery-grid img {
+    width: 100%;
+    height: 117px;
+    object-fit: cover;
+  }
+
+  /* Active State for Account Buttons */
+.account-button.active {
+    background-color: #4a6a4a; /* Darker green for active state */
+    color: white;
+  }
+
+
+  /* Make a Post Page Styling */
+#makePost {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+  }
+  
+  #makePost .back-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  #makePost .header {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  #makePost .post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  #makePost .auth-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  #makePost .message-input {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  #makePost input[type="file"] {
+    padding: 10px 0;
+  }
+  
+  #makePost .post-preview {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    display: none; /* shown via JS when needed */
+  }
+  
+  #makePost .landing-button {
+    padding: 12px;
+    font-size: 1rem;
+    background-color:#648268;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #makePost .landing-button:hover {
+    background-color: #4a6a4a;
+  }
+
+/* Center the Add Photo button in the Make a Post page */
+#makePost label[for="postImage"] {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: auto;
+  }
+  /* ======================== */
+/* Redemption Page Styles  */
+/* ======================== */
+
+/* Container for the redemption page */
+#redemption {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* Back button styling */
+  .back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #648268;
+    text-decoration: none;
+  }
+  
+  /* Heading */
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Form container */
+  .redemption-form {
+    margin-bottom: 10px;
+  }
+  
+  /* Input field for redemption code */
+  #redemption-code {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Redemption button */
+  .landing-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #648268;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .landing-button:hover {
+    background-color: #648268;
+  }
+  
+  /* Message after redemption */
+  .redemption-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Token info display */
+  #token-info {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Token image */
+  #token-image {
+    width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Token description */
+  #token-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  /* Add to collection button */
+  #addToCollectionButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #648268;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #addToCollectionButton:hover {
+    background-color: #648268;
+  }
+
+  .gallery-box {
+    width: 115px;
+    height: 117px;
+    background-color: #ccc;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 6px
+  }
+
+  .post-card {
+    position: relative; /* allow children to be absolutely positioned */
+  }
+  
+  .delete-button-overlay {
+    position: absolute;
+    bottom: 8px;      /* adjust to taste */
+    right: 8px;       /* adjust to taste */
+    background: rgba(255,255,255,0.8);
+    border: none;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .delete-button-overlay i {
+    color: #e74c3c;   /* red trash icon */
+    font-size: 1rem;  /* adjust size */
+  }
